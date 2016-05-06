@@ -25,6 +25,15 @@ import {Component, createElement} from 'react';
 
 
 /**
+ *	Maps the container's props to an initial state.
+ *
+ *	@callback mapPropsToStateCallback
+ *	@param {object} props - Container's props.
+ */
+
+
+
+/**
  *	Returns a function that wraps a component with a state container.
  *
  *	@param {mapStateToPropsCallback} mapStateToProps -
@@ -33,7 +42,8 @@ import {Component, createElement} from 'react';
  *	@param {mapSetStateToPropsCallback} mapSetStateToProps -
  *		A function that Maps the container's state to props
  *		for the wrapped component.
- *	@param {object} initialState - Initial state of the container.
+ *	@param {object|mapPropsToStateCallback} initialState -
+ *		Initial state of the container.
  */
 export default function connect(mapStateToProps, mapSetStateToProps, initialState = {}) {
 	/**
@@ -53,7 +63,10 @@ export default function connect(mapStateToProps, mapSetStateToProps, initialStat
 
 			constructor(props) {
 				super(props);
-				this.state = initialState;
+
+				this.state = (typeof initialState === 'function')
+					? initialState(props)
+					: initialState;
 			}
 
 			render() {
