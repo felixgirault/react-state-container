@@ -8,6 +8,7 @@ import {Component, createElement} from 'react';
  *	@callback mapStateToPropsCallback
  *	@param {object} state - Container's state.
  *	@param {object} props - Container's props.
+ *	@return {object} Props.
  */
 
 
@@ -20,6 +21,7 @@ import {Component, createElement} from 'react';
  *		state. This function has exactly the same API as the
  *		setState() method of React components.
  *	@param {object} props - Container's props.
+ *	@return {object} Props.
  */
 
 
@@ -44,6 +46,7 @@ import {Component, createElement} from 'react';
  *		for the wrapped component.
  *	@param {object|mapPropsToStateCallback} initialState -
  *		Initial state of the container.
+ *	@return {function} Wrapper function.
  */
 export default function connect(mapStateToProps, mapSetStateToProps, initialState = {}) {
 	/**
@@ -51,6 +54,7 @@ export default function connect(mapStateToProps, mapSetStateToProps, initialStat
 	 *
 	 *	@param {function|Component} WrappedComponent -
 	 *		The component to wrap.
+	 *	@return {Component} Component wrapper.
 	 */
 	return function wrapWithConnect(WrappedComponent) {
 		const name = WrappedComponent.displayName
