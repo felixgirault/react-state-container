@@ -3,6 +3,10 @@
 A simple container for local state, heavily inspired by redux's connect function. 
 It makes it easy to decouple state from components, without all the boilerplate needed with redux, thus making this component suitable to handle little bits of state that dont need to exist in a global store.
 
+## Alternatives
+
+* [recompose](https://github.com/acdlite/recompose/blob/master/docs/API.md#withstate) provides a clean and functional way to handle a component's state.
+
 ## Installation
 
 ```
